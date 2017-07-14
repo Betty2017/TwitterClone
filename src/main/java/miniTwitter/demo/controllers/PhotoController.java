@@ -181,9 +181,9 @@ public class PhotoController {
 	    	if(photo.getUser() == user){
 		    	
 	    		photoRepository.delete(photo);
-		    	
+	    		
 		    } 
-	    	
+	    	model.addAttribute("message","You Can not Delet this photo");
 	    	return "redirect:/newsfeed";
 	    }
 	    
