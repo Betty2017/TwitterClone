@@ -19,36 +19,47 @@
             <div th:if="${imageurl} != null">
 	            <form action="/filter" >
 	            	<img th:src="${imageurl}" />
-	            	<input type="hidden" name ="imagename" th:value="${imagename}" />
-	            	<p>Filter your picture</p>
-	            	Width:<input type="text" name="width" value="100" /><br/>
-	            	Height:<input type="text" name="height" value="100" /><br/>
-	            	crop:<input type="radio" name="action" value="crop"/><br/>
-	            	<select name="filter">
+	            	<input type="hidden" name ="imagename" th:value="${imagename}" /></br></br></br>
+	            	<h3>Filter your picture</h3>
+	            	<div><label> Width: <input type="text" name="width"  value="250" class="form-control"/> </label></div>
+	            	<div><label> Height: <input type="text" name="height"  value="250" class="form-control"/> </label></div>
+	            	<div><label> crop: <input type="radio" name="action"  value="crop" class="form-control"/> </label></div>
+	            	<div>
+	            	<select name="filter" >
+	            		<option value="grayscale" >Grayscale</option>
 					    <option value="sepia">Sepia</option>
-					    <option value="blur">Blur</option>
-					    <option value="blue" >Blue</option>
-					  </select>
+					</select>
+					 </div>
 					  <br/>
-	            	<input type="submit" value="Submit" />
+					  <div><button class="btn btn-lg btn-primary" type="submit" >Preview</button></div>
+	            	
 	            </form>
+	          
         	</div>
         </div>
-         <div th:if="${sizedimageurl} != null">
+        
+        
+         <div align="center"  th:if="${sizedimageurl} != null">
                 <ul>
                		 <div th:utext="${sizedimageurl}"></div>
                 </ul>
+                <div>
 	                <form action="/save"  method="post">
 	                	<input type="hidden" name="imagename" th:value="${imagename}"/>
 	                	<input type="hidden" name="sizedimageurl" th:value="${sizedimageurl}"/>
-						<input type="submit" value="Save" />
+						<div><button class="btn btn-lg btn-primary" type="submit" >Save</button></div><br/>
+						
 					</form>
-					
+				</div>
+				<div>	
 					<form action="/upload" >
-						<input type="submit" value="Cancel" />
+						<div><button class="btn btn-lg btn-primary" type="submit" >Cancel</button></div>
+						
 					</form>
+                </div>
                 
-            </div> 
+            </div>
+             
 
         <th:block th:replace="base :: footlinks"></th:block>
     </body>

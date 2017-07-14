@@ -49,6 +49,11 @@
 							
 							<p th:text="${post.content}"/>
 							<p th:text="${post.postedDate}"/>
+							<form th:action="@{/like/{post_id}(post_id=${post.post_id})}">
+									 	<button type="submit" class="btn btn-default">Like</button>
+								</form>
+								<div th:each="post : ${likedcount}">
+								<p th:text="${post.count}"/>
 						</div>
 					</div>
 					<div th:if="${photos!=null}">
@@ -60,10 +65,12 @@
 								<form th:action="@{/delete/{photoId}(photoId=${photo.photoId})}" method= "post">
 									 	<button type="submit" class="btn btn-default">Delete</button>
 								</form>
-								 <form th:action="@{/like/{photoId}(photoId=${photo.photoId})}" method= "post">
+								 <form th:action="@{/like/{photoId}(photoId=${photo.photoId})}">
 									 	<button type="submit" class="btn btn-default">Like</button>
 								</form>
-								
+								<div th:each="post : ${likedcount}">
+								<p th:text="${post.count}"/>
+								</div>
 						</th:block>
 					</div>
 				</ul>

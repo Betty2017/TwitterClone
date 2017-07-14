@@ -53,7 +53,7 @@ public class HomeController {
     public String index(Model m){
     	
     	m.addAttribute("allPosts",postRepository.findAll());
-    	return "newsfeed";
+    	return "allpost";
     }
 
     @RequestMapping("/login")

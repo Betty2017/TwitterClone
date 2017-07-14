@@ -11,9 +11,9 @@
 </head>
 <body>
 <th:block th:replace="base :: nav"></th:block>
-
-<div class="container">
-    <br /><br /><br />
+<br /><br /><br /><br /><br /><br /> <br /><br /><br />
+<div class="container" align="center">
+    
     
     <div th:if="${param.error}">
         Invalid username and password.
@@ -21,11 +21,16 @@
     <div th:if="${param.logout}">
         You have been logged out.
     </div>
-    <form th:action="@{/login}" method="post">
-        <div><label> Email: <input type="text" name="username"/> </label></div>
-        <div><label> Password: <input type="password" name="password"/> </label></div>
-        <div><input type="submit" value="Sign In"/></div>
+   
+     <form class="form-signin" th:action="@{/login}" method="post">
+     	<h2 class="form-signin-heading">Please Sign In</h2>
+        <div><label for=""> Email address: <input type="text" name="username" class="form-control"/> </label></div>
+        <div><label> Password: <input type="password" name="password" class="form-control"/> </label></div>
+        <div><button class="btn btn-lg btn-primary" type="submit" >Log in</button></div>
+        
     </form>
+    
+    
 </div><!-- /.container -->
 
 <th:block th:replace="base :: footlinks"></th:block>
