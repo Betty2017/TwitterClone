@@ -59,7 +59,7 @@ public class PhotoController {
 	   
 	   	@GetMapping("/uploadProfile")
 	    public String uploadProfileForm(){
-	        return "uploadProfile";
+	        return "uploadprofile";
 	    }
 
 	    @PostMapping("/upload")
