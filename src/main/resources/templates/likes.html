@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org " xmlns:sec="www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Twitter</title>
+
+    <th:block th:replace="base :: head"></th:block>
+</head>
+	<body>
+		<th:block th:replace="base :: nav"></th:block>
+		<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+		<div class="container">
+			
+			<h6>This page is under Construction</h6>				
+					<div th:each="upload : ${liked}">
+							<p th:text="${upload.likes}"></p>likes
+					</div>
+		</div>
+		
+		<th:block th:replace="base :: footlinks"></th:block>
+	</body>
+</html>
+
+	 
+						

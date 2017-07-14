@@ -155,6 +155,7 @@ public class PhotoController {
             photo.setCreatedAt(new Date());
             User user = userRepository.findByEmail(principal.getName());
             photo.setUser(user);
+            photo.setLikes(0);
             photoRepository.save(photo);
 	    	 
 	    	return "redirect:/newsfeed";
@@ -188,36 +189,22 @@ public class PhotoController {
 	    }
 	    
 	    @RequestMapping(path="/like/{photoId}")
-	    public String likePhoto(@PathVariable Long photoId, Principal p, Model model,@ModelAttribute Liked like){
-	    // count =0 ;
-	    	String uName = p.getName();
-	    	like.setUsername(uName);
-	    	like.setCount(count +1);
+	    public String likePhoto(@PathVariable Long photoId, Principal p, Model model){
+	         int  count = 1 ;
+	        Photo po = photoRepository.findOne(photoId);
+	        int numLikes = po.getLikes();
+	        int newlike = numLikes + 1;
+	    	po.setLikes(newlike);
+	    	photoRepository.save(po);
+	    		    	
+	    	Photo po2 = photoRepository.findOne(photoId);
+	    	System.out.println(po2.getLikes());
+	    	model.addAttribute("liked", po2);
 	    	
-	    	like.setPhotoId(photoId);
-	    	likeRepository.save(like);
-
-	    	model.addAttribute("liked", count);
-	    	
-	    	
-	    	return "redirect:/newsfeed";
+	    	return "likes";
 	    }
 	    
-	    @RequestMapping(path="/like/{post_id}")
-	    public String likePost(@PathVariable Long post_id, Principal p, Model model,@ModelAttribute Liked like){
-	    // count =0 ;
-	    	String uName = p.getName();
-	    	like.setUsername(uName);
-	    	like.setCount(count +1);
-	    	
-	    	like.setPost_id(post_id);
-	    	likeRepository.save(like);
-
-	    	model.addAttribute("liked", count);
-	    	
-	    	
-	    	return "redirect:/newsfeed";
-	    }
+	   
 	   
 	   
 }

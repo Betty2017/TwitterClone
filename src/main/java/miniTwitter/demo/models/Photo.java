@@ -24,10 +24,28 @@ public class Photo {
     @JoinColumn(name="userId")
     private User user;
     
+    private int likes;
+    
     @Basic
     private Date createdAt = new Date();
 
-    public Long getPhotoId() {
+    
+	public int getLikes() {
+		return likes;
+	}
+
+
+	public void setLikes(int likes) {
+		this.likes = likes;
+	}
+
+
+	public void setPhotoId(Long photoId) {
+		this.photoId = photoId;
+	}
+
+
+	public Long getPhotoId() {
 		return photoId;
 	}
 
@@ -86,5 +104,8 @@ public class Photo {
     public void setUpload(StoredFile file) {
         this.image = file.getPreloadedFile();
     }
+
+
+	
     
 }

@@ -51,6 +51,8 @@
 							<p th:text="${post.postedDate}"/>
 						</div>
 					</div>
+					
+					
 					<div th:if="${photos!=null}">
 						<th:block th:each="photo : ${photos}">
 							<a th:href="@{/post/{id}(id = ${photo.user.id})}" th:text="${photo.user.firstName + ' ' + photo.user.lastName}"></a>
@@ -61,17 +63,29 @@
 									 	<button type="submit" class="btn btn-default">Delete</button>
 								</form>
 								
-						</th:block>
-								<!-- <form th:action="@{/like/{photoId}(photoId=${photo.photoId})}">
+								<form th:action="@{/like/{photoId}(photoId=${photo.photoId})}">
 									 	<button type="submit" class="btn btn-default">Like</button>
+									 	
+									 	
 								</form>
-								<div th:each="post : ${likedcount}">
-								<p th:text="${post.count}"/></p> -->
+								
+								
+						</th:block>
+								
 					</div>
+				
+					<div th:each="upload : ${liked}">
+							<p th:text="${upload.likes}"></p>likes
+					</div>
+					
+						
+							
 				</ul>
 				
 			</div>
 		</div>
+		
+		
 		
 		<th:block th:replace="base :: footlinks"></th:block>
 	</body>
