@@ -75,7 +75,7 @@ public class PostController {
     	
     	m.addAttribute("photos", photos);
     	
-    	return "newsfeed";
+    	return "allpost";
     	
     }
     

@@ -21,8 +21,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.cloudinary.utils.ObjectUtils;
 
 import miniTwitter.demo.configs.CloudinaryConfig;
+import miniTwitter.demo.models.Likes;
 import miniTwitter.demo.models.Photo;
 import miniTwitter.demo.models.User;
+import miniTwitter.demo.repositories.LikesRepository;
 import miniTwitter.demo.repositories.PhotoRepository;
 import miniTwitter.demo.repositories.UserRepository;
 
@@ -39,6 +41,9 @@ public class PhotoController {
     
     @Autowired
     private PhotoRepository photoRepository;
+    
+    @Autowired
+    private LikesRepository likeRepository;
     
 	
     	@GetMapping("/upload")
@@ -61,9 +66,8 @@ public class PhotoController {
 
 	        try {
 	            Map uploadResult =  cloudc.upload(file.getBytes(), ObjectUtils.asMap("resourcetype", "auto"));
-
-	            model.addAttribute("message",
-	                    "You successfully uploaded '" + file.getOriginalFilename() + "'");
+	            
+	            model.addAttribute("message", "You successfully uploaded '" + file.getOriginalFilename() + "'");
 	            
 	            String filename = uploadResult.get("public_id").toString() + "." + uploadResult.get("format").toString();
 	            
@@ -174,5 +178,21 @@ public class PhotoController {
 	    	
 	    	return "redirect:/newsfeed";
 	    }
+	    
+	   /* @RequestMapping(path="/like/{photoId}")
+	    public String likePhoto(@PathVariable Long photoId, Principal p, Model model, Likes like){
+	    	int count =1 ;
+	    	String uName = p.getName();
+	    	like.setUsername(uName);
+	    	like.setCount(count);
+	    	count ++;
+	    	like.setPhotoid(photoId);
+	    	likeRepository.save(like);
+
+	    	model.addAttribute("user", count);
+	    	
+	    	
+	    	return "redirect:/newsfeed";
+	    }*/
 
 }

@@ -40,7 +40,7 @@ public class DataLoader implements CommandLineRunner{
         Photo defaultProfile = new Photo();
         defaultProfile.setCreatedAt(new Date());
         defaultProfile.setFileName("person-placeholder.jpg");
-        defaultProfile.setImage("<img src='http://res.cloudinary.com/redietcloud/image/upload/c_scale,w_150/v1499965523/person-placeholder_bkkzw8.jpg'/>");
+        defaultProfile.setImage("<img src='http://res.cloudinary.com/beticloud/image/upload/c_scale,h_150,w_150/v1499974539/loginhead_tz6xrf.jpg'/>");
         photoRepository.save(defaultProfile);
         
         Role adminRole = roleRepository.findByRole("ADMIN");
